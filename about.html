@@ -1,159 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About – KaamSaathi</title>
-  <link rel="stylesheet" href="CSS/style.css">
-<link rel="stylesheet" href="menu.css">
 
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="menu.css">
+
+  <style>
+    /* ===== General Page Styling ===== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fb;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    h2 {
+      text-align: center;
+      color: #222;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      background-color: #007bff;
+      margin: 8px auto 20px;
+      border-radius: 3px;
+    }
+
+    p, li {
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    section {
+      width: 80%;
+      margin: 40px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      background: #e9f5ff;
+      margin: 8px 0;
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+
+    ul li:hover {
+      transform: translateX(5px);
+      background: #d8ecff;
+    }
+
+    /* ===== Founder Message ===== */
+    .founder-message {
+      text-align: center;
+      font-style: italic;
+      background: linear-gradient(145deg, #f3f8ff, #ffffff);
+      border-left: 5px solid #007bff;
+    }
+
+    .founder-message p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      color: #333;
+    }
+
+    /* ===== Timeline Section ===== */
+    .timeline {
+      background-color: #f7fcff;
+      border-left: 5px solid #007bff;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .timeline-item {
+      margin: 20px 0;
+      font-size: 1.1rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "•";
+      color: #007bff;
+      position: absolute;
+      left: -17px;
+      font-size: 1.8rem;
+      top: -2px;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      section {
+        width: 90%;
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      p, li {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <!-- ===== HEADER ===== -->
-   <!-- Include Header -->
-<div id="header"></div>
+  <div id="header"></div>
+  <script>
+    fetch("header.html")
+      .then(response => response.text())
+      .then(data => document.getElementById("header").innerHTML = data);
+  </script>
 
-<script>
-  // Load the header.html file dynamically into all pages
-  fetch("header.html")
-    .then(response => response.text())
-    .then(data => document.getElementById("header").innerHTML = data);
-</script>
+  <br><br>
 
-  
-<br><br>
+  <!-- ===== ABOUT ===== -->
+  <section class="about">
+    <h2 data-key="Description">About Us</h2>
+    <p data-key="aboutDesc">
+      <strong>KaamSaathi is a platform created to help daily wage workers find jobs easily.
+      We connect workers, contractors, shop owners and companies so that earning money becomes simple.</strong>
+    </p>
+  </section>
 
-<section class="about">
-  <p data-key="aboutDesc">
-    <strong>KaamSaathi is a platform created to help daily wage workers find jobs easily.
-    We connect workers, contractors, shop owners and companies so that earning money becomes simple.</strong>
-  </p>
-</section>
+  <!-- ===== MISSION ===== -->
+  <section class="mission">
+    <h2 data-key="missionHeading">Our Mission</h2>
+    <ul>
+      <li data-key="m1">✅ Provide easy job access to daily wage workers</li>
+      <li data-key="m2">✅ Fair wages & no harassment</li>
+      <li data-key="m3">✅ Digital support for workers who don't use technology</li>
+      <li data-key="m4">✅ Bridge between employers & workers</li>
+    </ul>
+  </section>
 
-<br>
+  <!-- ===== FOUNDER MESSAGE ===== -->
+  <section class="founder-message">
+    <h2 data-key="founderMsgHeading">Message From Founder</h2>
+    <p data-key="founderMsg">
+      “Millions of skilled workers don’t get work on time.
+      KaamSaathi is built to solve this problem. 
+      We believe everyone deserves respect, fair wages, and opportunities.”
+    </p>
+  </section>
 
-<section class="mission">
-  <h2 data-key="missionHeading">Our Mission</h2>
-  <ul>
-    <li data-key="m1">✅ Provide easy job access to daily wage workers</li>
-    <li data-key="m2">✅ Fair wages & no harassment</li>
-    <li data-key="m3">✅ Digital support for workers who don't use technology</li>
-    <li data-key="m4">✅ Bridge between employers & workers</li>
-  </ul>
-</section>
+  <!-- ===== TIMELINE ===== -->
+  <section class="timeline">
+    <h2 data-key="journey">Our Journey</h2>
+    <div class="timeline-item" data-key="t1">🚀 2024 – Idea Started</div>
+    <div class="timeline-item" data-key="t2">🛠 2025 – Website Launched</div>
+  </section>
 
-<br>
+  <!-- ===== FOOTER ===== -->
+  <footer data-key="footer">
+    Copyright © 2030 KaamSaathi. All rights reserved.
+  </footer>
 
-<!-- <section class="team">
-  <h2 data-key="teamHeading">Meet Our Team</h2>
-  <div class="team-container">
-    <div class="team-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png">
-      <h3 data-key="sagar">Sagar Kumar</h3>
-      <p data-key="sagarRole">Founder & Developer</p>
-    </div>
-    <div class="team-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/2922/2922561.png">
-      <h3 data-key="rahul">Sajal Vaish</h3>
-      <p data-key="rahulRole">UI/UX Designer</p>
-    </div>
-    <div class="team-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/2922/2922656.png">
-      <h3 data-key="priya">Rudra</h3>
-      <p data-key="priyaRole">Marketing & Operations</p>
-    </div>
-  </div>
-</section> -->
+  <!-- ===== Language Script ===== -->
+  <script>
+    const text = {
+      en: {
+        aboutDesc: "KaamSaathi is a platform created to help daily wage workers find jobs easily. We connect workers, contractors, shop owners and companies so that earning money becomes simple.",
+        missionHeading: "Our Mission",
+        m1: "✅ Provide easy job access to daily wage workers",
+        m2: "✅ Fair wages & no harassment",
+        m3: "✅ Digital support for workers who don't use technology",
+        m4: "✅ Bridge between employers & workers",
+        founderMsgHeading: "Message From Founder",
+        founderMsg: "“Millions of skilled workers don’t get work on time. KaamSaathi is built to solve this problem. We believe everyone deserves respect, fair wages, and opportunities.”",
+        journey: "Our Journey",
+        t1: "🚀 2024 – Idea Started",
+        t2: "🛠 2025 – Website Launched",
+        footer: "Copyright © 2030 KaamSaathi. All rights reserved."
+      },
 
-<br>
-
-<section class="founder-message">
-  <h2 data-key="founderMsgHeading">Message From Founder</h2>
-  <br>
-  <p data-key="founderMsg">
-    “Millions of skilled workers don’t get work on time.
-    KaamSaathi is built to solve this problem. 
-    We believe everyone deserves respect, fair wages, and opportunities.”
-  </p>
-</section>
-
-<br>
-
-<section class="timeline">
-  <h2 data-key="journey">Our Journey</h2>
-  <div class="timeline-item" data-key="t1">🚀 2024 – Idea Started</div>
-  <div class="timeline-item" data-key="t2">🛠 2025 – Website Launched</div>
-</section>
-
-<footer data-key="footer">
-  Copyright © 2030 KaamSaathi. All rights reserved.
-</footer>
-
-<!-- ✅ Language Script -->
-<!-- ✅ Language Script with Memory -->
-<script>
-const text = {
-  en: {
-    aboutDesc: "KaamSaathi is a platform created to help daily wage workers find jobs easily. We connect workers, contractors, shop owners and companies so that earning money becomes simple.",
-    missionHeading: "Our Mission",
-    m1: "✅ Provide easy job access to daily wage workers",
-    m2: "✅ Fair wages & no harassment",
-    m3: "✅ Digital support for workers who don't use technology",
-    m4: "✅ Bridge between employers & workers",
-    founderMsgHeading: "Message From Founder",
-    founderMsg: "“Millions of skilled workers don’t get work on time. KaamSaathi is built to solve this problem. We believe everyone deserves respect, fair wages, and opportunities.”",
-    journey: "Our Journey",
-    t1: "🚀 2024 – Idea Started",
-    t2: "🛠 2025 – Website Launched",
-    footer: "Copyright © 2030 KaamSaathi. All rights reserved."
-  },
-
-  hi: {
-    aboutDesc: "कामसाथी एक ऐसा प्लेटफ़ॉर्म है जो दिहाड़ी मजदूरों को आसानी से काम दिलाने में मदद करता है। हम मजदूरों, ठेकेदारों, दुकानदारों और कंपनियों को जोड़ते हैं ताकि कमाई आसान हो सके।",
-    missionHeading: "हमारा उद्देश्य",
-    m1: "✅ दिहाड़ी मजदूरों को आसान नौकरी की सुविधा प्रदान करना",
-    m2: "✅ उचित वेतन और किसी भी प्रकार का उत्पीड़न नहीं",
-    m3: "✅ तकनीक का उपयोग न करने वाले मजदूरों को डिजिटल सहायता",
-    m4: "✅ नियोक्ताओं और मजदूरों के बीच सेतु बनाना",
-    founderMsgHeading: "संस्थापक का संदेश",
-    founderMsg: "“लाखों कुशल मजदूरों को समय पर काम नहीं मिल पाता। कामसाथी इस समस्या का समाधान करने के लिए बनाया गया है। हम मानते हैं कि हर किसी को सम्मान, उचित वेतन और अवसर मिलना चाहिए।”",
-    journey: "हमारी यात्रा",
-    t1: "🚀 2024 – विचार की शुरुआत",
-    t2: "🛠 2025 – वेबसाइट लॉन्च हुई",
-    footer: "कॉपीराइट © 2030 कामसाथी। सर्वाधिकार सुरक्षित।"
-  }
-};
-
-// ✅ Apply language immediately when the page loads
-document.addEventListener("DOMContentLoaded", () => {
-  const savedLang = localStorage.getItem("lang") || "en";
-  setLanguage(savedLang);
-});
-
-// ✅ Function to set language and save it
-function setLanguage(lang) {
-  localStorage.setItem("lang", lang);
-  document.querySelectorAll("[data-key]").forEach(el => {
-    const key = el.getAttribute("data-key");
-    if (text[lang] && text[lang][key]) {
-      el.innerText = text[lang][key];
-    }
-  });
-}
-</script>
-
-
-<script>
-  const sections = document.querySelectorAll("section");
-  window.addEventListener("scroll", () => {
-    sections.forEach(sec => {
-      let pos = sec.getBoundingClientRect().top;
-      if (pos < window.innerHeight - 100) {
-        sec.classList.add("show");
+      hi: {
+        aboutDesc: "कामसाथी एक ऐसा प्लेटफ़ॉर्म है जो दिहाड़ी मजदूरों को आसानी से काम दिलाने में मदद करता है। हम मजदूरों, ठेकेदारों, दुकानदारों और कंपनियों को जोड़ते हैं ताकि कमाई आसान हो सके।",
+        missionHeading: "हमारा उद्देश्य",
+        m1: "✅ दिहाड़ी मजदूरों को आसान नौकरी की सुविधा प्रदान करना",
+        m2: "✅ उचित वेतन और किसी भी प्रकार का उत्पीड़न नहीं",
+        m3: "✅ तकनीक का उपयोग न करने वाले मजदूरों को डिजिटल सहायता",
+        m4: "✅ नियोक्ताओं और मजदूरों के बीच सेतु बनाना",
+        founderMsgHeading: "संस्थापक का संदेश",
+        founderMsg: "“लाखों कुशल मजदूरों को समय पर काम नहीं मिल पाता। कामसाथी इस समस्या का समाधान करने के लिए बनाया गया है। हम मानते हैं कि हर किसी को सम्मान, उचित वेतन और अवसर मिलना चाहिए।”",
+        journey: "हमारी यात्रा",
+        t1: "🚀 2024 – विचार की शुरुआत",
+        t2: "🛠 2025 – वेबसाइट लॉन्च हुई",
+        footer: "कॉपीराइट © 2030 कामसाथी। सर्वाधिकार सुरक्षित।"
       }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem("lang") || "en";
+      setLanguage(savedLang);
     });
-  });
-</script>
+
+    function setLanguage(lang) {
+      localStorage.setItem("lang", lang);
+      document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
+        if (text[lang] && text[lang][key]) {
+          el.innerText = text[lang][key];
+        }
+      });
+    }
+  </script>
+
+  <!-- ===== Scroll Animation ===== -->
+  <script>
+    const sections = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+      sections.forEach(sec => {
+        let pos = sec.getBoundingClientRect().top;
+        if (pos < window.innerHeight - 100) {
+          sec.classList.add("show");
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
