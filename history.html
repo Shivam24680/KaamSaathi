@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worker History & Reviews</title>
+  <link rel="stylesheet" href="menu.css">
+  <link rel="stylesheet" href="CSS/style.css">
+  <style>
+    body {
+      background: #fff9f9;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .history-container {
+      margin: 40px auto;
+      max-width: 900px;
+      padding: 25px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .history-container h2 {
+      text-align: center;
+      color: #222;
+      margin-bottom: 5px;
+    }
+
+    .worker-info {
+      text-align: center;
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .review-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .review-table th, .review-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .review-table th {
+      background-color: #f4f4f4;
+      font-weight: bold;
+    }
+
+    .review-table td {
+      background: #fff;
+    }
+
+    .rating {
+      color: #ffb400;
+      font-weight: bold;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .back-btn:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header (loaded dynamically) -->
+  <div id="header"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("header").innerHTML = data);
+  </script>
+
+  <!-- Worker History Section -->
+  <div class="history-container">
+    <h2 id="workerName">Worker History</h2>
+    <p class="worker-info" id="workerDetails"></p>
+
+    <table class="review-table">
+      <thead>
+        <tr>
+          <th>Client Name</th>
+          <th>Job</th>
+          <th>Location</th>
+          <th>Duration</th>
+          <th>Rating</th>
+          <th>Review</th>
+        </tr>
+      </thead>
+      <tbody id="historyData"></tbody>
+    </table>
+
+    <a href="saved.html" class="back-btn">⬅ Back to Saved Workers</a>
+  </div>
+
+  <script>
+    // Retrieve selected worker from localStorage
+    const worker = JSON.parse(localStorage.getItem("selectedWorker"));
+
+    if (worker) {
+      document.getElementById("workerName").textContent = `${worker.name}`;
+      document.getElementById("workerDetails").textContent = `${worker.skill} • ${worker.exp} • ${worker.location}`;
+    }
+
+    // Worker-specific history and reviews
+    const workerHistories = {
+      "Plumber": [
+        { client: "Rajesh Sharma", job: "Pipe Fixing", location: "Delhi", duration: "3 days", rating: "⭐️⭐️⭐️⭐️", review: "Very professional and efficient." },
+        { client: "Anita Verma", job: "Bathroom Plumbing", location: "Gurgaon", duration: "2 days", rating: "⭐️⭐️⭐️⭐️⭐️", review: "Excellent work and punctual." }
+      ],
+      "Electrician": [
+        { client: "Vikas Gupta", job: "House Wiring", location: "Mumbai", duration: "4 days", rating: "⭐️⭐️⭐️⭐️", review: "Good skills, work completed safely." },
+        { client: "Neha Singh", job: "Switch Board Repair", location: "Thane", duration: "1 day", rating: "⭐️⭐️⭐️⭐️⭐️", review: "Quick and polite service." }
+      ],
+      "Painter": [
+        { client: "Suresh Choudhary", job: "Interior Painting", location: "Lucknow", duration: "5 days", rating: "⭐️⭐️⭐️⭐️", review: "Clean and smooth finish." },
+        { client: "Meena Agarwal", job: "Office Painting", location: "Kanpur", duration: "3 days", rating: "⭐️⭐️⭐️⭐️⭐️", review: "Professional attitude and high-quality work." }
+      ],
+      "Carpenter": [
+        { client: "Rohit Mehta", job: "Furniture Assembly", location: "Kolkata", duration: "2 days", rating: "⭐️⭐️⭐️⭐️", review: "Very skilled and precise." },
+        { client: "Priya Das", job: "Wooden Door Repair", location: "Howrah", duration: "1 day", rating: "⭐️⭐️⭐️⭐️⭐️", review: "Quick service, perfect finishing." }
+      ],
+      "Security": [
+        { client: "Akash Bansal", job: "Night Guard", location: "Ahmedabad", duration: "15 days", rating: "⭐️⭐️⭐️⭐️", review: "Responsible and punctual." },
+        { client: "Rita Patel", job: "Event Security", location: "Surat", duration: "2 days", rating: "⭐️⭐️⭐️⭐️⭐️", review: "Excellent coordination during event." }
+      ],
+      "Construction Worker": [
+        { client: "Deepak Yadav", job: "House Foundation", location: "Lucknow", duration: "10 days", rating: "⭐️⭐️⭐️⭐️", review: "Hardworking and reliable team." },
+        { client: "Karan Tiwari", job: "Wall Repair", location: "Kanpur", duration: "4 days", rating: "⭐️⭐️⭐️⭐️⭐️", review: "Neat and strong work quality." }
+      ]
+    };
+
+    // Get worker's job type
+    const jobType = worker ? worker.skill : null;
+
+    // Populate the table
+    const tbody = document.getElementById("historyData");
+    const historyList = workerHistories[jobType] || [];
+
+    if (historyList.length > 0) {
+      historyList.forEach(h => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${h.client}</td>
+          <td>${h.job}</td>
+          <td>${h.location}</td>
+          <td>${h.duration}</td>
+          <td class="rating">${h.rating}</td>
+          <td>${h.review}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    } else {
+      tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;">No history available for this worker.</td></tr>`;
+    }
+  </script>
+</body>
+</html>

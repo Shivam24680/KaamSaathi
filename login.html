@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - KaamSaathi</title>
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <div id="header"></div>
+  <script>
+    // Load common header dynamically
+    fetch("header.html")
+      .then(response => response.text())
+      .then(data => document.getElementById("header").innerHTML = data);
+  </script>
+
+  <!-- ===== LOGIN BOX ===== -->
+  <section class="login-box">
+    <h2>Welcome Back 👋</h2>
+    <p>Please login to continue</p>
+
+    <form id="loginForm">
+      <!-- User Type -->
+      <label class="role-label">Login as:</label>
+      <div class="role-select">
+        <label>
+          <input type="radio" name="role" value="Worker" required>
+          Worker
+        </label>
+        <label>
+          <input type="radio" name="role" value="Employer" required>
+          Employer
+        </label>
+      </div>
+
+      <input type="text" placeholder="Mobile Number or Email" required>
+      <input type="password" placeholder="Password" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account? <a href="signup.html">Signup</a></p>
+  </section>
+
+  <!-- ===== CSS STYLES ===== -->
+  <style>
+    .login-box {
+      width: 350px;
+      margin: 70px auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      text-align: center;
+      animation: fadeIn 0.9s ease;
+    }
+
+    .login-box h2 {
+      color: #2196F3;
+      margin-bottom: 10px;
+    }
+
+    .login-box input {
+      width: 92%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .role-label {
+      font-size: 15px;
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .role-select {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 10px 0;
+    }
+
+    .role-select label {
+      font-size: 14px;
+    }
+
+    .login-box button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 10px;
+      background: #2196F3;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .login-box button:hover {
+      background: #0b7dda;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-box p {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .login-box a {
+      color: #2196F3;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .login-box a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <!-- ===== JS LOGIC ===== -->
+  <script>
+    // Highlight selected role
+    const roleInputs = document.querySelectorAll("input[name='role']");
+    roleInputs.forEach(input => {
+      input.addEventListener("change", () => {
+        roleInputs.forEach(r => r.parentElement.style.fontWeight = "normal");
+        input.parentElement.style.fontWeight = "bold";
+      });
+    });
+
+    // Login logic with redirection
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const role = document.querySelector("input[name='role']:checked");
+      const user = document.querySelector("input[placeholder='Mobile Number or Email']").value.trim();
+      const pass = document.querySelector("input[placeholder='Password']").value.trim();
+
+      if (!role || !user || !pass) {
+        alert("Please fill all fields ✅");
+        return;
+      }
+
+      alert("Login Successful ✅");
+
+      // Redirect based on role
+      if (role.value === "Worker") {
+        window.location.href = "show-jobs.html";
+      } else if (role.value === "Employer") {
+        window.location.href = "show-workers.html";
+      }
+    });
+  </script>
+
+</body>
+</html>

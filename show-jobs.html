@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My profile</title>
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="menu.css">
+
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+   <!-- Include Header -->
+<div id="header"></div>
+
+<script>
+  // Load the header.html file dynamically into all pages
+  fetch("header.html")
+    .then(response => response.text())
+    .then(data => document.getElementById("header").innerHTML = data);
+</script>
+
+  
+<br><br>
+<h2 style="text-align:center;">All Posted Jobs</h2>
+
+<div class="job-list" id="jobList">
+
+    <div class ="job-card">
+        <h3>Job Title</h3>
+        <p>Company: XYZ Pvt Ltd</p>
+        <p>Location: Aanand Vihar</p>
+        <p>Salary: ₹50000/month</p>
+        <button>View Details</button>
+    </div>
+    <div class ="job-card">
+        <h3>Job Title</h3>
+        <p>Company: ABC Corp</p>
+        <p>Location: Ghaziabad</p>
+        <p>Salary: ₹60000/month</p>
+        <button>View Details</button>
+    </div>
+    <div class ="job-card">
+        <h3>Job Title</h3>
+        <p>Company: DEF Inc</p>
+        <p>Location: Noida</p>
+        <p>Salary: ₹70000/month</p>
+        <button>View Details</button>
+        <div>
+       
+</div>
+
+
+<link rel="stylesheet" href="CSS/show-jobs.css">
+<script src="Js/show-jobs.js"></script>

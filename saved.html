@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saved Jobs & Workers</title>
+
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="menu.css">
+
+  <style>
+    body {
+      background-color: #fff8f8;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .saved-section {
+      max-width: 1000px;
+      margin: 60px auto;
+      background: white;
+      padding: 25px 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .saved-section h2 {
+      text-align: center;
+      font-size: 26px;
+      margin-bottom: 25px;
+      color: #222;
+    }
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .filters input,
+    .filters select {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .filters button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #007bff;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .filters button:hover {
+      background: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    thead {
+      background: #333;
+      color: white;
+    }
+
+    th, td {
+      text-align: center;
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      font-size: 15px;
+    }
+
+    tbody tr:hover {
+      background-color: #f7f7f7;
+      transition: 0.2s;
+    }
+
+    .call-btn, .whatsapp-btn {
+      border: none;
+      border-radius: 6px;
+      color: white;
+      padding: 6px 12px;
+      cursor: pointer;
+      margin: 2px;
+      font-size: 14px;
+    }
+
+    .call-btn { background: #e60000; }
+    .whatsapp-btn { background: #00b32d; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <div id="header"></div>
+
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("header").innerHTML = data);
+  </script>
+
+  <!-- ===== SAVED WORKERS SECTION ===== -->
+  <section class="saved-section">
+    <h2>📌 Saved Jobs & Workers</h2>
+
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Search by name, job, location...">
+      <select id="skillFilter">
+        <option value="">All Skills</option>
+        <option value="Plumber">Plumber</option>
+        <option value="Electrician">Electrician</option>
+        <option value="Painter">Painter</option>
+        <option value="Carpenter">Carpenter</option>
+        <option value="Construction">Construction Worker</option>
+      </select>
+      <button id="downloadPDF">⬇ Download PDF</button>
+      <button id="sendEmail">📧 Email Saved List</button>
+    </div>
+
+    <table id="savedTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Skill</th>
+          <th>Experience</th>
+          <th>Location</th>
+          <th>Contact</th>
+          <th>History</th>
+        </tr>
+      </thead>
+      <tbody id="savedData"></tbody>
+    </table>
+  </section>
+
+  <script>
+    // Worker Data
+    // const savedWorkers = [
+    //   { name: "Ravi Kumar", skill: "Electrician", exp: "3 Years", location: "Kanpur", phone: "9876543210" },
+    //   { name: "Amit Singh", skill: "Plumber", exp: "2 Years", location: "Lucknow", phone: "9234567891" },
+    //   { name: "Sandeep Yadav", skill: "Painter", exp: "4 Years", location: "Agra", phone: "9988776655" },
+    //   { name: "Rohit Sharma", skill: "Carpenter", exp: "5 Years", location: "Varanasi", phone: "9123456789" },
+    //   { name: "Manoj Gupta", skill: "Construction Worker", exp: "3 Years", location: "Noida", phone: "9823456712" },
+    //   { name: "Deepak Chauhan", skill: "Electrician", exp: "6 Years", location: "Prayagraj", phone: "9654783214" },
+    //   { name: "Ajay Verma", skill: "Plumber", exp: "2.5 Years", location: "Delhi", phone: "9812345678" },
+    //   { name: "Sunil Kumar", skill: "Painter", exp: "3 Years", location: "Gorakhpur", phone: "9723456781" },
+    //   { name: "Pawan Tiwari", skill: "Carpenter", exp: "4 Years", location: "Bareilly", phone: "9745632180" },
+    //   { name: "Ramesh Mishra", skill: "Construction Worker", exp: "5 Years", location: "Lucknow", phone: "9912345670" }
+    // ];
+
+    // const savedTable = document.getElementById("savedData");
+
+    // // Populate Table
+    // savedWorkers.forEach(worker => {
+    //   const row = document.createElement("tr");
+    //   row.innerHTML = `
+    //     <td>${worker.name}</td>
+    //     <td>${worker.skill}</td>
+    //     <td>${worker.exp}</td>
+    //     <td>${worker.location}</td>
+    //     <td>
+    //       <button class="call-btn" onclick="callWorker('${worker.phone}')">📞 Call</button>
+    //       <button class="whatsapp-btn" onclick="whatsappWorker('${worker.phone}')">💬 Chat</button>
+    //     </td>
+    //   `;
+    //   savedTable.appendChild(row);
+    // });
+
+    // // Functions
+    // function callWorker(num) {
+    //   window.location.href = `tel:${num}`;
+    // }
+
+    // function whatsappWorker(num) {
+    //   const msg = encodeURIComponent("Hello, I saw your profile on KaamSaathi!");
+    //   window.open(`https://wa.me/${num}?text=${msg}`, "_blank");
+    // }
+    const savedWorkers = [
+  { name: "Ramesh Kumar", skill: "Plumber", exp: "5 years", location: "Delhi", contact: "9876543210" },
+  { name: "Suresh Singh", skill: "Electrician", exp: "3 years", location: "Mumbai", contact: "9876501234" },
+  { name: "Amit Verma", skill: "Painter", exp: "4 years", location: "Lucknow", contact: "9765123488" },
+  { name: "Vikram Das", skill: "Carpenter", exp: "6 years", location: "Kolkata", contact: "9548123765" },
+  { name: "Ravi Patel", skill: "Security", exp: "2 years", location: "Ahmedabad", contact: "9988776655" }
+];
+
+// Populate table
+const tbody = document.getElementById("savedData");
+
+savedWorkers.forEach((w, index) => {
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>${w.name}</td>
+    <td>${w.skill}</td>
+    <td>${w.exp}</td>
+    <td>${w.location}</td>
+    <td>${w.contact}</td>
+    <td><button class="history-btn" data-index="${index}">View History</button></td>
+  `;
+  tbody.appendChild(row);
+});
+
+// When “View History” is clicked
+document.querySelectorAll(".history-btn").forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    const index = e.target.dataset.index;
+    const worker = savedWorkers[index];
+    localStorage.setItem("selectedWorker", JSON.stringify(worker)); // Save worker temporarily
+    window.location.href = "history.html"; // Redirect to history page
+  });
+});
+  </script>
+  <!-- Add jsPDF CDN before your closing </body> tag -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  // ---- PDF Download Function ----
+  document.getElementById("downloadPDF").addEventListener("click", () => {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    doc.setFontSize(16);
+    doc.text("Saved Workers List", 14, 15);
+    doc.setFontSize(12);
+
+    let y = 30;
+    doc.text("Name", 14, y);
+    doc.text("Skill", 60, y);
+    doc.text("Experience", 100, y);
+    doc.text("Location", 140, y);
+    y += 10;
+
+    savedWorkers.forEach(w => {
+      doc.text(w.name, 14, y);
+      doc.text(w.skill, 60, y);
+      doc.text(w.exp, 100, y);
+      doc.text(w.location, 140, y);
+      y += 10;
+    });
+
+    doc.save("Saved_Workers_List.pdf");
+  });
+
+  // ---- Email Saved List Function ----
+  document.getElementById("sendEmail").addEventListener("click", () => {
+    let emailBody = "Hello,%0D%0A%0D%0AHere is my saved workers list:%0D%0A%0D%0A";
+
+    savedWorkers.forEach((w, i) => {
+      emailBody += `${i + 1}. ${w.name} - ${w.skill} (${w.exp}), ${w.location}%0D%0A`;
+    });
+
+    emailBody += "%0D%0A-- Sent from KaamSaathi";
+
+    const mailtoLink = `mailto:?subject=Saved Workers List&body=${emailBody}`;
+    window.location.href = mailtoLink;
+  });
+  
+</script>
+
+</body>
+</html>

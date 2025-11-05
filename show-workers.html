@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show Workers - KaamSaathi</title>
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="menu.css">
+  <link rel="stylesheet" href="CSS/show-workers.css">
+
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <div id="header"></div>
+
+  <script>
+    // Load the header.html file dynamically into all pages
+    fetch("header.html")
+      .then(response => response.text())
+      .then(data => document.getElementById("header").innerHTML = data);
+  </script>
+
+  <h2 style="text-align:center; margin-top:20px;">Registered Workers</h2>
+
+  <div class="worker-list" id="workerList"></div>
+
+  <script src="Java Script/show-workers.js"></script>
+</body>
+</html>
+

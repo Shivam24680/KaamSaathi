@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KaamSaathi</title>
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="menu.css">
+
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+   <!-- Include Header -->
+<div id="header"></div>
+
+<script>
+  // Load the header.html file dynamically into all pages
+  fetch("header.html")
+    .then(response => response.text())
+    .then(data => document.getElementById("header").innerHTML = data);
+</script>
+
+  
+
+
+
+  <!-- ===== MAIN HERO ===== -->
+  <main>
+    <img src="https://media.assettype.com/outlookbusiness/import/uploadimage/library/16_9/16_9_5/wage_hike_1663153432.webp?w=801&auto=format%2Ccompress&fit=max&format=webp&dpr=1.0" alt="Worker Image">
+    <input placeholder="Search for Daily Wage Jobs">
+    <p data-key="heroMsg">Find your dream job with KaamSaathi</p>
+  </main>
+
+  <!-- ✅ JOB CARDS SECTION -->
+<section class="jobs">
+  <h2 data-key="availableJobs">Available Jobs</h2>
+
+  <div class="jobs-container">
+
+    <div class="job-card">
+      <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="constructionHelper">
+      <h3 data-key="constructionHelper">Construction Helper</h3>
+      <p><span data-key="salary">Salary:</span> ₹450/day</p>
+      <p><span data-key="location">Location:</span> Lucknow</p>
+      <button data-key="applyBtn">Apply Now</button>
+    </div>
+
+    <div class="job-card">
+      <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="deliveryBoy">
+      <h3 data-key="deliveryBoy">Delivery Boy</h3>
+      <p><span data-key="salary">Salary:</span> ₹600/day</p>
+      <p><span data-key="location">Location:</span> Kanpur</p>
+      <button data-key="applyBtn">Apply Now</button>
+    </div>
+
+    <div class="job-card">
+      <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="cleaner">
+      <h3 data-key="cleaner">Cleaner</h3>
+      <p><span data-key="salary">Salary:</span> ₹400/day</p>
+      <p><span data-key="location">Location:</span> Prayagraj</p>
+      <button data-key="applyBtn">Apply Now</button>
+    </div>
+
+    <div class="job-card">
+      <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="electricianAssistant">
+      <h3 data-key="electricianAssistant">Electrician Assistant</h3>
+      <p><span data-key="salary">Salary:</span> ₹550/day</p>
+      <p><span data-key="location">Location:</span> Varanasi</p>
+      <button data-key="applyBtn">Apply Now</button>
+    </div>
+
+    <div class="job-card">
+      <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="painterHelper">
+      <h3 data-key="painterHelper">Painter Helper</h3>
+      <p><span data-key="salary">Salary:</span> ₹500/day</p>
+      <p><span data-key="location">Location:</span> Agra</p>
+      <button data-key="applyBtn">Apply Now</button>
+    </div>
+
+
+
+
+    
+    <div class="job-card">
+      
+      <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="gardener">
+      <h3 data-key="gardener">Gardener</h3>
+      <p><span data-key="salary">Salary:</span> ₹450/day</p>
+      <p><span data-key="location">Location:</span> Ghaziabad</p>
+      <button data-key="applyBtn">Apply Now</button>
+    </div>
+
+    <div class="job-card">
+      <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="plumberAssistant">
+      <h3 data-key="plumberAssistant">Plumber Assistant</h3>
+      <p><span data-key="salary">Salary:</span> ₹600/day</p>
+      <p><span data-key="location">Location:</span> Noida</p>
+      <button data-key="applyBtn">Apply Now</button>
+    </div>
+
+    <div class="job-card">
+      <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="masonHelper">
+      <h3 data-key="masonHelper">Mason Helper</h3>
+      <p><span data-key="salary">Salary:</span> ₹550/day</p>
+      <p><span data-key="location">Location:</span> Meerut</p>
+      <button data-key="applyBtn">Apply Now</button>
+    </div>
+
+    <div class="job-card">
+      <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="carpenterAssistant">
+      <h3 data-key="carpenterAssistant">Carpenter Assistant</h3>
+      <p><span data-key="salary">Salary:</span> ₹500/day</p>
+      <p><span data-key="location">Location:</span> Aligarh</p>
+      <button data-key="applyBtn">Apply Now</button>
+    </div>
+
+    <div class="job-card">
+      <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="securityGuard">
+      <h3 data-key="securityGuard">Security Guard</h3>
+      <p><span data-key="salary">Salary:</span> ₹650/day</p>
+      <p><span data-key="location">Location:</span> Bareilly</p>
+      <button data-key="applyBtn">Apply Now</button>
+    </div>
+
+    <div class="job-card">
+      <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/201/201818.png" alt="housePainter">
+      <h3 data-key="housePainter">House Painter</h3>
+      <p><span data-key="salary">Salary:</span> ₹550/day</p>
+      <p><span data-key="location">Location:</span> Moradabad</p>
+      <button data-key="applyBtn">Apply Now</button>
+    </div>
+
+    <div class="job-card">
+      <img class="job-img" src="https://elements-resized.envatousercontent.com/elements-preview-images/5f3cf3c0-d738-4d69-b898-8f0e242ad973?w=632&cf_fit=scale-down&q=85&format=auto&s=fa8638eb564a6bac9eef4ec256f416344ae26aa63bfa48b71d0a53a3215c160f" alt="roadLaborer">
+      <h3 data-key="roadLaborer">Road Laborer</h3>
+      <p><span data-key="salary">Salary:</span> ₹500/day</p>
+      <p><span data-key="location">Location:</span> Saharanpur</p>
+      <button data-key="applyBtn">Apply Now</button>
+    </div>
+
+
+
+<div class="job-card">
+  <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/9672/9672697.png">
+  <h3 data-key="constructionHelper">Construction Helper</h3>
+  <p><span data-key="salary">Salary:</span> ₹450/day</p>
+  <p><span data-key="location">Location:</span> Lucknow</p>
+  <button data-key="applyBtn">Apply Now</button>
+</div>
+
+
+
+    
+  </div>
+</section>
+
+<hr>
+<!-- ✅ CONTACT SECTION FOR WORKERS & EMPLOYERS -->
+<section class="contact-section">
+    <h2 data-key="contactWorkers">Contact Workers & Employers</h2>
+
+    <div class="contact-card">
+      <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="constructionWorker">
+        <h3 data-key="constructionWorker">Construction Worker</h3>
+        <p><span data-key="experience">Experience:</span> 2 Years</p>
+        <p><span data-key="location">Location:</span> Lucknow</p>
+        <button class="call-btn">📞 <span data-key="callNow">Call Now</span></button>
+        <button class="whatsapp-btn">💬 <span data-key="whatsapp">WhatsApp</span></button>
+    </div>
+
+    <div class="contact-card">
+      <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="electrician">
+        <h3 data-key="electrician">Electrician</h3>
+        <p><span data-key="experience">Experience:</span> 3 Years</p>
+        <p><span data-key="location">Location:</span> Kanpur</p>
+        <button class="call-btn">📞 <span data-key="callNow">Call Now</span></button>
+        <button class="whatsapp-btn">💬 <span data-key="whatsapp">WhatsApp</span></button>
+    </div>
+
+    <div class="contact-card">
+      <img class="job-img" src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="plumber">
+        <h3 data-key="plumber">Plumber</h3>
+        <p><span data-key="experience">Experience:</span> 1.5 Years</p>
+        <p><span data-key="location">Location:</span> Prayagraj</p>
+        <button class="call-btn">📞 <span data-key="callNow">Call Now</span></button>
+        <button class="whatsapp-btn">💬 <span data-key="whatsapp">WhatsApp</span></button>
+    </div>
+
+</section>
+
+
+
+
+  <!-- FOOTER -->
+  <footer><span data-key="footerText">Copyright © 2030 KaamSaathi. All rights reserved.</span></footer>
+
+  <!-- ✅ JAVASCRIPT: LANGUAGE DATA -->
+<script>
+const langData = {
+  en: {
+    aboutNav: "About Us",
+    servicesNav: "Our Services",
+    profileNav: "My Profile",
+    loginNav: "Login",
+    signupNav: "Signup",
+
+    heroMsg: "Find your dream job with KaamSaathi",
+
+    availableJobs: "Available Jobs",
+    applyBtn: "Apply Now",
+    salary: "Salary:",
+    location: "Location:",
+    experience: "Experience:",
+    callNow: "Call Now",
+    whatsapp: "WhatsApp",
+
+    contactWorkers: "Contact Workers & Employers",
+    constructionWorker: "Construction Worker",
+    electrician: "Electrician",
+    plumber: "Plumber",
+
+    constructionHelper: "Construction Helper",
+    deliveryBoy: "Delivery Boy",
+    cleaner: "Cleaner",
+    electricianAssistant: "Electrician Assistant",
+    painterHelper: "Painter Helper",
+    gardener: "Gardener",
+    plumberAssistant: "Plumber Assistant",
+    masonHelper: "Mason Helper",
+    carpenterAssistant: "Carpenter Assistant",
+    securityGuard: "Security Guard",
+    housePainter: "House Painter",
+    roadLaborer: "Road Laborer",
+
+    footerText: "Copyright © 2030 KaamSaathi. All rights reserved."
+  },
+
+  hi: {
+    aboutNav: "हमारे बारे में",
+    servicesNav: "हमारी सेवाएं",
+    profileNav: "मेरा प्रोफाइल",
+    loginNav: "लॉगिन",
+    signupNav: "साइनअप",
+
+    heroMsg: "KaamSaathi के साथ अपनी पसंद की नौकरी खोजें",
+
+    availableJobs: "उपलब्ध नौकरियां",
+    applyBtn: "आवेदन करें",
+    salary: "वेतन:",
+    location: "स्थान:",
+    experience: "अनुभव:",
+    callNow: "कॉल करें",
+    whatsapp: "व्हाट्सऐप",
+
+    contactWorkers: "मज़दूरों और नियोक्ताओं से संपर्क करें",
+    constructionWorker: "निर्माण मज़दूर",
+    electrician: "बिजली मिस्त्री",
+    plumber: "प्लम्बर",
+
+    constructionHelper: "निर्माण सहायक",
+    deliveryBoy: "डिलीवरी ब्वॉय",
+    cleaner: "सफाई कर्मचारी",
+    electricianAssistant: "इलेक्ट्रीशियन सहायक",
+    painterHelper: "पेंटर सहायक",
+    gardener: "माली",
+    plumberAssistant: "प्लम्बर सहायक",
+    masonHelper: "मिस्त्री सहायक",
+    carpenterAssistant: "बढ़ई सहायक",
+    securityGuard: "सुरक्षा गार्ड",
+    housePainter: "घर पेंटर",
+    roadLaborer: "सड़क मजदूर",
+
+    footerText: "कॉपीराइट © 2030 KaamSaathi. सर्वाधिकार सुरक्षित।"
+  }
+};
+
+function setLanguage(lang) {
+  document.querySelectorAll("[data-key]").forEach(el => {
+    const key = el.getAttribute("data-key");
+    el.innerText = langData[lang][key];
+  });
+}
+</script>
+
+</body>
+</html>
